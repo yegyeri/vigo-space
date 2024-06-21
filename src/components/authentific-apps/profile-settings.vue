@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import theButton from '@/components/interfaceComponents/TheButton.vue'
 import { ref } from 'vue'
 import { productStore } from '@/stores/products';
 const store = productStore()
@@ -20,30 +21,30 @@ function savingProfileInfo(){
             <span class="profile-item"><i class='bx bx-female-sign'></i>{{ store.user.gender }}</span>
             <span class="profile-item"><i class='bx bx-cake'></i>{{ store.user.date }}</span>
             <span class="profile-item"><i class='bx bx-envelope'></i>{{ store.user.mail }}</span>
-            <button class="edit-btn" @click="editActive = !editActive"><i class='bx bx-edit'></i><span>EDIT</span></button>
+            <theButton :icon="'bx-edit'" :text="'EDIT'" @click="editActive = !editActive"/>
         </div>
         <div class="profile-edit dfCol jcs ais" v-if="editActive">
-            <div class="profile-form">
+            <div class="form-container">
                 <label for="name" class="label">Your name</label>
                 <input type="text" name="name" v-model="profileName">
             </div>
-            <div class="profile-form">
+            <div class="form-container">
                 <label for="location" class="label">Location</label>
                 <input type="text" name="location">
             </div>
-            <div class="profile-form">
+            <div class="form-container">
                 <label for="gender" class="label">Gender</label>
                 <input type="text" name="gender">
             </div>
-            <div class="profile-form">
+            <div class="form-container">
                 <label for="birthday" class="label">Birthday</label>
                 <input type="text" name="birthday" >
             </div>
-            <div class="profile-form">
+            <div class="form-container">
                 <label for="email" class="label">E-mail</label>
                 <input type="text" name="email">
             </div>
-            <button class="edit-btn" @click="savingProfileInfo()"><i class='bx bx-check-double' ></i><span>DONE</span></button>
+                <theButton :icon="'bx-check-double'" :text="'DONE'" @click="savingProfileInfo()"/>
         </div>
     </div>
 </template>
@@ -85,37 +86,15 @@ function savingProfileInfo(){
     }
 
     .profile-edit{
-        gap: 20px;
-        .profile-form{
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 400px;
-            height: 60px;
-            border: 1px solid var(--lime);
-            border-radius: 30px;
-            .label{
-                position: absolute;
-                color: var(--lime);
+        .form-container{
+            label{
                 background-color: var(--dark2);
-                padding: 0px 15px;
-                top: -13px;
-                left: 50px;
             }
             input{
-                width: 350px;
-                height: 40px;
                 background-color: var(--dark2);
-                border: none;
-                color: var(--lime);
-                font-size: 20px;
-                &:focus{
-                    outline: none;
-                }
             }
         }
+        
     }
 }
 </style>
