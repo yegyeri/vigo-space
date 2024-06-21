@@ -1,0 +1,163 @@
+:root {
+  --lime: rgb(219, 51, 96);
+  --cream: rgba(241, 235, 224, 1);
+  --dark: RGB(27, 24, 25);
+  --dark2: RGB(38, 34, 37);
+  --white: RGB(240, 241, 245);
+  --kanit: "Kanit", sans-serif;
+  --navBarWidth: 350px;
+}
+.white{
+  color: var(--white);
+}
+.prim{
+  color: var(--lime);
+}
+.tdn{
+  text-decoration: none;
+}
+.active {
+  background-color: var(--lime);
+  color: var(--dark);
+}
+
+.df {
+  display: flex;
+}
+
+.dfCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jcs {
+  justify-content: start;
+}
+
+.jce {
+  justify-content: end;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.jcsa {
+  justify-content: space-around;
+}
+
+.aic {
+  align-items: center;
+}
+
+.ais {
+  align-items: start;
+}
+
+.aie {
+  align-items: end;
+}
+
+
+.btn-pack{
+  border: none;
+  background-color: rgba(0,0,0,0);
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  height: 65px;
+  border: 2px solid var(--lime);
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  label{
+    position: absolute;
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 0px 10px;
+    top: -14px;
+    left: 30px;
+  }
+  input{
+    width: 350px;
+    height: 40px;
+    background-color: var(--dark);
+    border: none;
+    font-size: 25px;
+    color: var(--white);
+    &:focus{
+      outline: none;
+    }
+  }
+}
+
+.post-feedbacks{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  gap: 15px;
+  width: 100%;
+  height: 75px;
+  
+  .feedback{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    height: 55px;
+
+    cursor: pointer;
+    user-select: none;
+    .feed-icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 55px;
+      height: 55px;
+      background-color: var(--lime);
+      color: var(--white);
+      font-size: 30px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+    .feed-text{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 0px 15px;
+      height: 55px;
+
+      background-color: var(--white);
+      color: var(--lime);
+      font-size: 30px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+    &:hover{
+      .feed-icon{
+        .bx{
+          transform: scale(1.4);
+          transition: .3s ease;
+        }
+      }
+      .feed-text{
+        background-color: var(--lime);
+        color: var(--white);
+        transition: .3s ease;
+      }
+    }
+  }
+}
+
