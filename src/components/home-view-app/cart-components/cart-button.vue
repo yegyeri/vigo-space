@@ -44,5 +44,19 @@ const store = productStore()
             transition: .5s ease;
         }
     }
+    @include forMobile(){
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        right: 30px;
+        font-size: 25px;
+        .product-counter{
+            width: 20px;
+            height: 20px;
+            font-size: 15px;
+            top: -5px;
+            right: -5px;
+        }
+    }
 }
 </style>

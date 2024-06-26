@@ -4,6 +4,7 @@ import { BlogPost } from '@/components/ts/blog-news.ts'
 import blogPopup from '@/components/blog-news-apps/blog-popup-news.vue'
 import postItem from '@/components/blog-news-apps/blog-item.vue'
 import pageTitle from '@/components/interfaceComponents/pageTitle.vue'
+import randomQuote from '@/components/blog-news-apps/random__quotes.vue'
 import { productStore } from '@/stores/products';
 const store = productStore()
 const filterPosts = computed(() => {
@@ -61,6 +62,7 @@ function selectPost(id) {
         </div>
         <pageTitle :icon="'bxs-edit-alt'" :text="'Authors'" />
         <div class="blog-authors df jcs aic">
+            
             <div class="author-item dfCol jcc aic" v-for="a in authors" :key="a.id">
                 <img :src="a.img" alt="author" class="author-img">
                 <span>{{ a.name }}</span>
@@ -74,23 +76,25 @@ function selectPost(id) {
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .blog-news-main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    
 
     .blog-popular {
         padding: 0px 20px;
-        width: 100%;
         height: 300px;
         gap: 30px;
-
+        overflow-x: auto;
+        flex-wrap: nowrap;
     }
 
     .blog-authors {
-        width: 100%;
+       width: 100%;
         height: 300px;
+        flex-wrap: nowrap;
         overflow-x: auto;
         gap: 20px;
 
@@ -127,6 +131,15 @@ function selectPost(id) {
         width: 100%;
         flex-wrap: wrap;
         gap: 30px;
+    }
+    @include forTablets(){
+        .blog-popular{
+            padding: 0px;
+            height: 350px;
+        }
+        .blog-news{
+            padding: 10px;
+        }
     }
 }
 </style>

@@ -4,93 +4,60 @@ import { productStore } from '@/stores/products';
 import theButton from '@/components/interfaceComponents/TheButton.vue'
 import notifyBtn from '@/components/home-view-app/notificationButton.vue'
 const store = productStore()
-const infoBlock = ref(false)
 </script>
 
 <template>
-    <div class="mini_profile dfCol jcc aic">
-        <div class="avatar-btns df jcc aic">
-            <img :src="store.user.profilePic" alt="pic" class="avatar">
-        </div>
-        <div class="profile-name dfCol jcc aic">
+    <div class="mini_profile df jcs aie">
+        <img :src="store.user.profilePic" alt="pic" class="mini-profile-avatar">
+        <div class="profile-name dfCol jcc ais">
             <span class="name">{{ store.user.name }}</span>
             <theButton :icon="'bxs-dollar-circle'" :text="'7.33'" />
-            <div class="addBtns df jcc aic">
-                <div class="btn-pack" @click="infoBlock = !infoBlock">
-                    <notifyBtn :btnIcon="'bxs-info-circle'" :btnText="'INFO'"
-                        :notificate="store.notifications.info" :text="'INFORMATION IS SHOWING'" />
-                </div>
-                <router-link to="/profile" class="tdn">
-                    <notifyBtn :btnIcon="'bxs-cog'" :btnText="'EDIT'"
-                        :notificate="store.notifications.alert" :text="'Changes may affect the appearance of the page'" />
-                </router-link>
-            </div>
-        </div>
-        <div class="profile_info dfCol jcc ais" v-if="infoBlock">
-            <span class="df jcs aic"><i class='bx bx-female-sign'></i>{{ store.user.gender }}</span>
-            <span class="df jcs aic"><i class='bx bx-envelope'></i>{{ store.user.mail }}</span>
-            <span class="df jcs aic"><i class='bx bx-cake'></i>{{ store.user.date }}</span>
-            <span class="df jcs aic"><i class='bx bx-map'></i>{{ store.user.location }}</span>
+            <router-link to="/profile" class="tdn">
+                <notifyBtn :btnIcon="'bxs-cog'" :btnText="'EDIT'" :notificate="store.notifications.alert"
+                    :text="'Changes may affect the appearance of the page'" />
+            </router-link>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .mini_profile {
-    width: 100%;
+    width: 350px;
     height: 350px;
-    padding: 20px;
+    padding: 10px;
+    gap: 20px;
 
-    .avatar-btns {
-        width: 100%;
-        gap: 20px;
-
-        .avatar {
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-
+    .mini-profile-avatar {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid var(--lime);
     }
 
     .profile-name {
         color: var(--white);
         font-size: 20px;
-        width: 100%;
+        width: 210px;
         gap: 15px;
 
         .name {
-            font-size: 30px;
-        }
-
-        .addBtns {
-            gap: 10px;
-
+            font-size: 20px;
         }
     }
 
-
-    .profile_info {
+    @include forTablets() {
+        flex-direction: column;
+        align-items: start;
+        width: 200px;
+        height: 300px;
         position: absolute;
-        background-color: rgba(219, 51, 96, 0.8);
-        color: var(--white);
-        padding: 10px 20px;
-        z-index: 2;
-        left: 370px;
-        bottom: 40px;
-        font-size: 20px;
-
-        span {
-            i {
-                padding: 0px 10px 0px 0px;
-                color: var(--white);
-            }
-        }
+        top: 120px;
+        background-color: var(--dark);
+        padding: 20px;
     }
-
-
-
+    @include forMobile(){
+        top: 80px;
+    }
 }
 </style>

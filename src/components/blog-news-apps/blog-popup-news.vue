@@ -35,7 +35,7 @@ function updateComment() {
 </script>
 
 <template>
-    <div class="blog-popup df jcc aic">
+    <div class="blog-popup df jcc ais">
         <div class="some-post dfCol jcs ais">
             <div class="post-title df jcsb aic">
                 <pageTitle :icon="'bxs-news'" :text="$props.selectedPost.title" />
@@ -100,13 +100,14 @@ function updateComment() {
     background-color: rgba(0, 0, 0, 0.7);
 
     .some-post {
-        width: 1200px;
+        width: 80%;
         height: 800px;
         background-color: var(--dark2);
         border-radius: 15px;
         padding: 15px 30px;
         overflow-y: auto;
         gap: 30px;
+        margin-top: 150px;
 
         .post-title {
             width: 100%;
@@ -201,6 +202,31 @@ function updateComment() {
                 }
 
 
+            }
+        }
+    }
+    @include forLaptop(){
+        .some-post{
+            width: 70%;
+        }
+    }
+    @include forTablets(){
+        .some-post{
+            margin-top: var(--navBar-closed);
+            border-radius: 0;
+            width: 100%;
+            height: 100vh;
+            .post-title{
+                flex-direction: column-reverse;
+            }
+            .post-popup-text{
+                padding: 0px;
+                span{
+                    font-size: 18px;
+                }
+            }
+            .post-popup-info{
+                padding: 0px;
             }
         }
     }

@@ -52,7 +52,7 @@ function savingProfileInfo(){
 <style scoped lang="scss">
 .profile-page {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 50px;
     gap: 40px;
 

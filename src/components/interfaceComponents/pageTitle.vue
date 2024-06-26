@@ -37,11 +37,46 @@ const props = defineProps<{
     display: flex;
     justify-content: start;
     align-items: center;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    
 
     color: var(--white);
-    width: calc(100% - 50px);
     font-size: 40px;
     font-weight: 400;
   }
+  
+  @include forLaptop(){
+    padding: 30px 0px;
+    .title-icon{
+      font-size: 45px;
+    }
+    .title-text{
+      font-size: 35px;
+    }
+  }
+  @include forTablets(){
+    width: 70%;
+    .title-icon{
+      font-size: 40px;
+    }
+    .title-text{
+      font-size: 26px;
+    }
+  }
+  @include forMobile(){
+    width: 90%;
+    padding: 30px 0px 20px 0px;
+    .title-icon{
+      font-size: 30px;
+    }
+    .title-text{
+      font-size: 20px;
+    }
+  }
+  
 }
 </style>

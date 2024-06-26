@@ -5,7 +5,11 @@
   --dark2: RGB(38, 34, 37);
   --white: RGB(240, 241, 245);
   --kanit: "Kanit", sans-serif;
-  --navBarWidth: 350px;
+  --navBar-closed: 120px;
+  --navBarOpen: 350px;
+  @include forMobile(){
+    --navBar-closed: 80px;
+  }
 }
 .white{
   color: var(--white);
@@ -96,6 +100,22 @@
     color: var(--white);
     &:focus{
       outline: none;
+    }
+  }
+  @include forMobile(){
+    width: 90%;
+    height: 60px;
+    label{
+      font-size: 15px;
+    }
+  }
+  @include forTablets(){
+    width: 70%;
+    
+    input{
+      width: 90%;
+      height: 90%;
+      font-size: 20px;
     }
   }
 }

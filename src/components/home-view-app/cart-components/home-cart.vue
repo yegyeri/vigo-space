@@ -20,7 +20,7 @@ const removeFromCart = (id) => {
         </div>
         <div class="no-empty-cart dfCol jcs aic" v-else>
             <div class="cart-items-list dfCol jcs aic">
-                <div class="cart-item df jcs aic" v-for="item in store.cart" :key="item.id">
+                <div class="cart-item df jcsb aic" v-for="item in store.cart" :key="item.id">
                     <div class="cart-item-img df jcs aic">
                         <img :src="item.img" alt="cartItemPic">
                     </div>
@@ -37,9 +37,9 @@ const removeFromCart = (id) => {
                         <span class="cart-item-price">Cost: {{ item.cost }} $</span>
                         <span class="total-price">Total: {{ item.totalCost() }} $</span>
                     </div>
-                    <button class="btn-pack" @click="removeFromCart(item.id)">
-                        <notifyBtn :btnIcon="'bxs-x-square'" :btnText="'REMOVE'" :notificate="store.notifications.danger" :text="'Product removed from cart'"/>
-                    </button>
+                    <div class="remove-block df jcc aic" @click="removeFromCart(item.id)">
+                        <i class='bx bxs-x-square'></i>
+                    </div>
                 </div>
             </div>
             <div class="payment-info df jcc aic">
@@ -58,6 +58,7 @@ const removeFromCart = (id) => {
 
     width: 1200px;
     height: 750px;
+    top: 120px;
 
     background-color: var(--dark);
     transition: .5s ease;
@@ -117,7 +118,7 @@ const removeFromCart = (id) => {
                 }
 
                 .cart-item-info {
-                    width: 350px;
+                    width: 20%;
                     color: var(--white);
                     gap: 10px;
 
@@ -224,6 +225,70 @@ const removeFromCart = (id) => {
             }
         }
     }
-
+    @include forLaptop(){
+        width: 800px;
+        height: 900px;
+        .no-empty-cart{
+            .cart-items-list{
+                height: 700px;
+                .cart-item{
+                    .cart-item-qty{
+                        .bx{
+                            font-size: 10px;
+                        }
+                        .qty{
+                            font-size: 20px;
+                        }
+                    }
+                    .cart-item-cost{
+                        width: 50px;
+                        span{
+                            font-size: 15px;
+                        }
+                    }
+                    .remove-block{
+                        width: 10%;
+                    }
+                }
+            }
+            .payment-info{
+                height: 100px;
+            }
+        }
+    }
+    @include forTablets(){
+        width: 100%;
+        height: 100vh;
+        top: var(--navBar-closed);
+        right: 0;
+        border-radius: 0px;
+        .no-empty-cart{
+            .cart-items-list{
+                height: 80%;
+                .cart-item{
+                    .cart-item-img{
+                        width: 10%;
+                    }
+                    .cart-item-qty{
+                        width: 5%;
+                    }
+                }
+            }
+            .payment-info{
+                height: 10%;
+            }
+        }
+    }
+    @include forMobile(){
+        .no-empty-cart{
+            .cart-items-list{
+                .cart-item{
+                    .cart-item-qty{
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
 }
 </style>

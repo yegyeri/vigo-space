@@ -52,8 +52,8 @@ const socialLinks = [
                     <img src="../home-view-app/png/logo-trans.png" alt="logo" class="visit-logo">
                     <span class="visit-logo-text">VIGO</span>
                 </div>
-                <div class="contacts-list dfCol jcs aic">
-                    <div class="visit-item df jcs aic" v-for="item in socialLinks" :key="item.id">
+                <div class="contacts-list df jcs aic">
+                    <div class="visit-item dfCol jcc aic" v-for="item in socialLinks" :key="item.id">
                         <span class="visit-item-icon df jcc aic"><i class='bx' :class="item.icon"></i></span>
                         <span class="visit-item-text df jcc aic">{{ item.contact }}</span>
                     </div>
@@ -63,8 +63,9 @@ const socialLinks = [
                 <img src="../contacts-apps/png/map.jpg" alt="">
             </div>
         </div>
-        <div class="feedback-area df jcc aic">
-            <div class="email-btn dfCol jcc ais">
+        <pageTitle :icon="'bx-question-mark'" :text="'Do you have any questions...'" />
+        <div class="feedback-area dfCol jcc ais">
+            <div class="email-btn df jcs aic">
                 <div class="form-container">
                     <label for="email">E-mail</label>
                     <input type="e-mail" name="email">
@@ -83,6 +84,9 @@ const socialLinks = [
 .contacts-main {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+    gap: 30px;
+    padding: 10px;
 
     .gym-contacts {
         width: 100%;
@@ -90,16 +94,15 @@ const socialLinks = [
         gap: 30px;
 
         .visit-card {
-            width: 800px;
-            height: 500px;
+            width: 1030px;
+            height: 600px;
             background-color: var(--dark);
             border-radius: 15px;
             box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
-            padding: 30px 30px;
-            gap: 100px;
+            gap: 40px;
 
             .contacts-logo {
-                width: 300px;
+                width: 250px;
 
                 .visit-logo {
                     width: 250px;
@@ -116,28 +119,43 @@ const socialLinks = [
 
 
             .contacts-list {
-                width: 500px;
+                width: 630px;
+                height: 90%;
+                flex-wrap: wrap;
+                gap: 10px;
 
                 .visit-item {
-                    width: 100%;
+                    width: 300px;
+                    height: 170px;
                     font-size: 30px;
                     gap: 10px;
+                    background-color: rgba(219, 51, 96, 0.6);
                     color: var(--white);
                     cursor: pointer;
+                    border-radius: 10px;
 
                     .visit-item-icon {
-                        color: var(--lime);
-                        font-size: 40px;
+                        color: var(--white);
+                        font-size: 80px;
+                    }
+                    .visit-item-text{
+                        font-size: 20px;
+                        display: none;
+                    }
+                    &:nth-child(5){
+                        width: 610px;
                     }
 
                     &:hover {
+                        background-color: var(--lime);
+                        transition: .3s ease;
                         .visit-item-icon {
                             transform: rotate(360deg);
                             transition: .3s ease;
                         }
 
                         .visit-item-text {
-                            text-decoration: underline;
+                            display: flex;
                         }
 
 
@@ -163,15 +181,18 @@ const socialLinks = [
     }
 
     .feedback-area {
-        width: 100%;
-        height: 250px;
+        width: 930px;
+        height: 400px;
         border-radius: 20px;
         background-color: var(--dark);
-        gap: 50px;
-
+        gap: 10px;
+        padding: 30px;
+        .email-btn{
+            gap: 30px;
+        }
         .feedback-textarea {
             resize: none;
-            width: 900px;
+            width: 100%;
             height: 200px;
             background-color: var(--dark);
             border: 2px solid var(--lime);

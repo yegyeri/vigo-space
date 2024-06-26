@@ -37,7 +37,7 @@ const filterProducts = computed(() => {
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .shop-page{
     width: 100%;
     height: 100%;
@@ -69,9 +69,21 @@ const filterProducts = computed(() => {
                     outline: none;
                 }
             }
+            @include forTablets(){
+                height: 50px;
+                border-radius: 10px;
+                .bx{
+                    font-size: 30px;
+                }
+                input{
+                    height: 30px;
+                    font-size: 25px;
+                }
+            }
         }
         .category-btns{
             gap: 20px;
+            flex-wrap: wrap;
         }
     }
     .shop-main{
