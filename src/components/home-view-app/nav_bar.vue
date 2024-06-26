@@ -41,112 +41,220 @@ const items = [
     },
 
 ]
+
+const menuBurgerActive = ref(true)
+const userButtonActive = ref(true)
+
 </script>
 
 <template>
-    <div class="logo df jcc aic">
-        <div class="logo_png"></div>
-        <span class="logo_text">V<span class="white">I</span>G<span class="white">O</span></span>
+    <div class="nav-bar-area dfCol jcsb ais">
+        <div class="logo df jcs aic">
+            <img src="../home-view-app/png/logo-trans.png" alt="logo" class="logo-png">
+            <span class="logo_text">V<span class="white">I</span>G<span class="white">O</span></span>
+        </div>
+        <div class="menu-burger jcc aic" @click="menuBurgerActive = !menuBurgerActive"><i class='bx bx-menu'></i></div>
+        <div class="nav_bar_menu dfCol jcc ais" v-show="menuBurgerActive">
+            <router-link :to="item.to" class="bar_item df jcs aic tdn" v-for="item in items" :key="item.id"
+                :class="{ 'active': act === item.id }" @click="act = item.id">
+                <div class="bar-icon df jcc aic">
+                    <i class='bx' :class="item.icon"></i>
+                </div>
+                <span class="bar-name df jcs aic"> {{ item.name }} </span>
+            </router-link>
+        </div>
+        <div class="user-btn df jcc aic" @click="userButtonActive = !userButtonActive"><i
+                class='bx bxs-user-rectangle'></i></div>
+        <nav_bar_profile v-show="userButtonActive" />
     </div>
-    <div class="nav_bar_menu dfCol jcc aic">
-        <router-link :to="item.to" class="bar_item df jcs aic" v-for="item in items" :key="item.id"
-            :class="{ 'active': act === item.id }" @click="act = item.id">
-            <span class="bar-icon df jcc iac">
-                <i class='bx' :class="item.icon"></i>
-            </span>
-            <span class="bar-name df jcs aic"> {{ item.name }} </span>
-        </router-link>
-    </div>
-    <nav_bar_profile />
+
 </template>
 
 <style scoped lang="scss">
-.logo {
-    width: 100%;
-    height: 140px;
-    gap: 10px;
-    padding: 20px;
-    cursor: pointer;
-    user-select: none;
+.nav-bar-area {
+    position: fixed;
+    left: 0;
+    z-index: 49;
 
-    .logo_png {
-        background-image: url('/src/components/home-view-app/png/logo-trans.png');
-        background-position: center;
-        background-size: cover;
-        width: 90px;
-        height: 90px;
-    }
+    width: var(--navBar-closed);
+    height: 100%;
+    transition: .3s ease;
 
-    .logo_text {
-        font-size: 70px;
-        font-weight: 700;
-        color: var(--lime);
-    }
-}
+    background-color: var(--dark);
+    box-shadow: 9px 0px 14px 0px rgba(0, 0, 0, 0.4);
 
-.nav_bar_menu {
-    width: 100%;
-    height: calc(100% - 500px);
-    padding: 30px 30px;
-    gap: 10px;
+    overflow: hidden;
 
-    .bar_item {
+    .logo {
         width: 100%;
-        height: 60px;
-        text-decoration: none;
-        color: var(--white);
-        border-radius: 10px;
-        gap: 20px;
+        height: 140px;
+        gap: 10px;
+        padding: 10px;
+        cursor: pointer;
         user-select: none;
-        padding: 0px 0px 0px 20px;
 
-        .bar-icon {
-            width: 60px;
+        .logo-png {
+            object-fit: cover;
+            width: 100px;
+            height: 100px;
+        }
 
-            .bx {
-                font-size: 40px;
-                color: var(--lime);
+        .logo_text {
+            font-size: 85px;
+            font-weight: 700;
+            color: var(--lime);
+
+        }
+
+    }
+
+    .menu-burger {
+        display: none;
+    }
+
+    .nav_bar_menu {
+        width: 100%;
+        height: 450px;
+        gap: 10px;
+
+        .bar_item {
+            width: 350px;
+            height: 60px;
+            color: var(--white);
+            gap: 20px;
+            user-select: none;
+
+            .bar-icon {
+                width: 120px;
+                height: 60px;
+                border-radius: 10px;
+
+
+                .bx {
+                    font-size: 40px;
+                    color: var(--lime);
+                }
+            }
+
+
+            .bar-name {
+                width: 230px;
+                height: 100%;
+                font-size: 25px;
+                transition: .5s ease;
+
+            }
+
+            &:hover {
+                background-color: var(--lime);
+                transition: .3s ease;
+
+                .bar-icon {
+                    .bx {
+                        color: var(--white);
+                        transition: .3s;
+                    }
+                }
+
             }
         }
 
-
-        .bar-name {
-            width: 230px;
-            height: 100%;
-            font-size: 25px;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-            transition: .5s ease;
-        }
-
-        &:hover {
+        .active {
             background-color: var(--lime);
-            transition: .3s ease;
+            color: var(--white);
+
+            .bar-name {
+                padding: 0px 0px 0px 30px;
+            }
 
             .bar-icon {
                 .bx {
                     color: var(--white);
-                    transition: .3s;
                 }
             }
 
         }
     }
 
-    .active {
-        background-color: var(--lime);
-        color: var(--white);
-        .bar-name{
-            background-color: var(--white);
-            color: var(--lime);
-            padding: 0px 0px 0px 30px;
-        }
-        .bar-icon {
-            .bx {
-                color: var(--white);
+    .user-btn {
+        display: none;
+    }
+
+    &:hover {
+        width: var(--navBarOpen);
+        transition: .5s ease;
+    }
+
+    @include forTablets() {
+        width: 100%;
+        height: var(--navBar-closed);
+        top: 0;
+        flex-direction: row;
+        overflow: visible;
+        justify-content: start;
+
+        .logo {
+            height: 100%;
+            width: 120px;
+
+            .logo_text {
+                display: none;
             }
         }
 
+        .menu-burger {
+            display: flex;
+            width: 90px;
+            height: 100%;
+            font-size: 70px;
+            color: var(--white);
+        }
+
+        .nav_bar_menu {
+            position: absolute;
+            z-index: 51;
+            top: 120px;
+            width: 320px;
+            background-color: var(--dark);
+
+            .bar_item {
+                width: 320px;
+            }
+        }
+
+        .user-btn {
+            display: flex;
+            width: 90px;
+            height: 100%;
+            font-size: 50px;
+            color: var(--white);
+        }
+
+        &:hover {
+            width: 100%;
+        }
+    }
+
+    @include forMobile() {
+        .logo {
+            width: 80px;
+            .logo-png {
+                height: 60px;
+                width: 60px;
+            }
+        }
+        .nav_bar_menu {
+            top: 80px;
+        }
+
+        .menu-burger {
+            width: 60px;
+            font-size: 40px;
+        }
+        .user-btn {
+            width: 60px;
+            font-size: 35px;
+        }
     }
 }
 </style>

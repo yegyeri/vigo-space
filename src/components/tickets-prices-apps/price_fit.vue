@@ -40,7 +40,7 @@ const addToCart = (product) => {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .price-view {
     width: 100%;
     height: 100%;
@@ -48,23 +48,21 @@ const addToCart = (product) => {
     overflow-y: auto;
 
     .tickets-list {
-        width: 100%;
-        height: 100%;
         gap: 30px;
+        padding: 20px 0px;
         flex-wrap: wrap;
-        padding: 10px 0px;
 
         .price-item {
             position: relative;
-            width: 700px;
+            width: 500px;
             height: 400px;
             border-radius: 20px;
             background-color: var(--dark);
             box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.1);
 
             .price-item-img {
-                width: 700px;
-                height: 400px;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
                 border-radius: 15px;
 
@@ -83,7 +81,7 @@ const addToCart = (product) => {
                 transition: .3s ease;
 
                 .ticket-name {
-                    font-size: 45px;
+                    font-size: 35px;
                     text-transform: uppercase;
                 }
 
@@ -92,7 +90,7 @@ const addToCart = (product) => {
                     gap: 10px;
 
                     .ticket-about {
-                        font-size: 18px;
+                        font-size: 15px;
                         font-weight: 300;
                     }
 
@@ -108,12 +106,9 @@ const addToCart = (product) => {
 
                         }
                     }
-
-
                 }
-
                 &:hover {
-                    height: 250px;
+                    height: 170px;
 
                     .ticket-info {
                         font-size: 25px;
@@ -126,6 +121,36 @@ const addToCart = (product) => {
                 position: absolute;
                 bottom: 30px;
                 left: 30px;
+            }
+        }
+    }
+    @include forLaptop(){
+        .tickets-list{
+            overflow-x: auto;
+            flex-direction: row;
+            
+        }
+    }
+    @include forTablets(){
+        .tickets-list{
+            
+            .price-item{
+                width: 300px;
+                height: 500px;
+                .price-item-img{
+                    width: 300px;
+                    height: 500px;
+                }
+                .price-item-info{
+                    .ticket-name{
+                        font-size: 25px;
+                    }
+                    .ticket-info{
+                        .ticket-about{
+                            font-size: 15px;
+                        }
+                    }
+                }
             }
         }
     }

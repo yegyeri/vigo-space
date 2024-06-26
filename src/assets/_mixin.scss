@@ -1,0 +1,20 @@
+@mixin forMobile{
+    @media (max-width: 479px){
+        @content;
+    }
+}
+@mixin forTablets{
+    @media (max-width: 959px){
+        @content;
+    }
+}
+@mixin forLaptop{
+    @media (max-width: 1365px){
+        @content;
+    }
+}
+@mixin forDesktop{
+    @media (max-width:1919px){
+        @content;
+    }
+}

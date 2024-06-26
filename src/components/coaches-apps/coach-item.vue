@@ -29,12 +29,13 @@ const props = defineProps<{
     position: relative;
 
     .coach-card-front {
-        width: 340px;
+        width: 300px;
+        height: 450px;
 
         .coach-item-img {
             object-fit: cover;
-            width: 340px;
-            height: 530px;
+            width: 100%;
+            height: 100%;
             border-radius: 20px;
         }
 
@@ -46,13 +47,13 @@ const props = defineProps<{
             border-radius: 10px;
             bottom: 20px;
             left: 20px;
-            font-size: 25px;
+            font-size: 20px;
         }
 
         .coach-card-back {
             position: absolute;
-            width: 340px;
-            height: 530px;
+            width: 100%;
+            height: 100%;
             border-radius: 19px;
 
             cursor: pointer;
@@ -92,8 +93,81 @@ const props = defineProps<{
 
         
     }
-
-
+    @include forLaptop(){
+        .coach-card-front{
+            width: 250px;
+            height: 350px;
+            .coach-info{
+                font-size: 15px;
+            }
+            .coach-card-back{
+                width: 250px;
+                height: 350px;
+                span{
+                    &:nth-child(1){
+                        font-size: 20px;
+                    }
+                    &:nth-child(2){
+                        font-size: 15px;
+                    }
+                    &:nth-child(3){
+                        font-size: 15px;
+                    }
+                    
+                }
+            }
+        }
+    }
+    @include forTablets(){
+        .coach-card-front{
+            width: 200px;
+            height: 300px;
+            .coach-info{
+                font-size: 12px;
+            }
+            .coach-card-back{
+                width: 200px;
+                height: 300px;
+                span{
+                    &:nth-child(1){
+                        font-size: 15px;
+                    }
+                    &:nth-child(2){
+                        font-size: 12px;
+                    }
+                    &:nth-child(3){
+                        font-size: 12px;
+                    }
+                    
+                }
+            }
+        }
+    }
+    @include forMobile(){
+        .coach-card-front{
+            width: 250px;
+            height: 350px;
+            .coach-info{
+                font-size: 12px;
+            }
+            .coach-card-back{
+                width: 250px;
+                height: 350px;
+                span{
+                    &:nth-child(1){
+                        font-size: 15px;
+                    }
+                    &:nth-child(2){
+                        font-size: 12px;
+                    }
+                    &:nth-child(3){
+                        font-size: 12px;
+                    }
+                    
+                }
+            }
+        }
+    }
 
 }
 </style>

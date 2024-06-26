@@ -93,6 +93,24 @@ function BmiCalulate(weight:number, height:number){
             }
         }
     }
+    @include forLaptop(){
+        flex-direction: column;
+        height: 200px;
+
+    }
+    @include forMobile(){
+        height: 300px;
+        .bmi-calc-inputs{
+            flex-direction: column;
+            height: 200px;
+            gap: 0;
+        }
+        .bmi-calc-result{
+            align-items: start;
+            justify-content: start;
+            flex-direction: column;
+        }
+    }
 
 }
 </style>

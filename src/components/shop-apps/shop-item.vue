@@ -35,15 +35,15 @@ const props = defineProps<{
 <style scoped lang="scss">
 .shop-item {
     position: relative;
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
     background-color: var(--dark);
     border-radius: 20px;
     box-shadow: 0px 0px 24px 2px rgba(34, 60, 80, 0.2);
 
     .shop-item-img {
-        width: 450px;
-        height: 450px;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         border-radius: 20px;
     }
@@ -96,13 +96,24 @@ const props = defineProps<{
             }
         }
     }
-
-
-
     .btn-pack {
         position: absolute;
         bottom: 20px;
         right: 20px;
+    }
+    @include forLaptop(){
+        width: 280px;
+        height: 400px;
+        .shop-item-info{
+            .shop-item-name{
+                font-size: 20px;
+            }
+            .item-info{
+                .shop-item-about{
+                    font-size: 15px;
+                }
+            }
+        }
     }
 }
 </style>

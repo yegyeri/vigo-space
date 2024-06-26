@@ -1,25 +1,25 @@
 <!-- import theButton from '@/components/interfaceComponents/TheButton.vue' -->
 <script setup lang="ts">
 const props = defineProps<{
-    icon: string
-    text: string
+  icon: string
+  text: string
 }>()
 </script>
 
 <template>
-    <div class="btn">
-        <span class="btn-text">{{ props.text }}</span>
-        <span class="btn-icon"><i class='bx' :class="props.icon"></i></span>
-    </div>
+  <div class="btn">
+    <span class="btn-text">{{ props.text }}</span>
+    <span class="btn-icon"><i class='bx' :class="props.icon"></i></span>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.btn{
+.btn {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  
+
   height: 50px;
   border: none;
   border-radius: 10px;
@@ -30,7 +30,8 @@ const props = defineProps<{
 
   background-color: var(--lime);
   color: var(--dark);
-  .btn-text{
+
+  .btn-text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +41,8 @@ const props = defineProps<{
     font-size: 20px;
     padding: 0px 30px;
   }
-  .btn-icon{
+
+  .btn-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,21 +56,46 @@ const props = defineProps<{
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-  
-  &:hover{
-      background-color: var(--white);
-      .btn-icon{
-        background-color: var(--lime);
-        color: var(--white);
-        transition: .3s ease;
-      }
-      .btn-text{
-        color: var(--lime);
-        transform: scale(1.1);
-        padding-right: 60px;
-        transition: .3s ease;
-      }
+
+  &:hover {
+    background-color: var(--white);
+
+    .btn-icon {
+      background-color: var(--lime);
+      color: var(--white);
       transition: .3s ease;
+    }
+
+    .btn-text {
+      color: var(--lime);
+      padding-right: 60px;
+      transition: .3s ease;
+    }
+
+    transition: .3s ease;
+  }
+
+  @include forTablets() {
+    height: 35px;
+    border-radius: 5px;
+
+    .btn-text {
+      font-size: 15px;
+      padding: 0px 15px;
+    }
+
+    .btn-icon {
+      height: 35px;
+      font-size: 25px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    &:hover {
+      .btn-text {
+        padding-right: 15px;
+      }
+    }
   }
 }
 </style>

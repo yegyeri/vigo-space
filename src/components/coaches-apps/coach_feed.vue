@@ -41,11 +41,12 @@ const filterCoaches = computed(() => {
 
     .category-btns{
         gap: 20px;
+        flex-wrap: wrap;
     }
 
     .coaches-list {
         width: 100%;
-        height: 750px;
+        height: 100%;
         gap: 20px;
         flex-wrap: wrap;
         scrollbar-color: var(--lime);
